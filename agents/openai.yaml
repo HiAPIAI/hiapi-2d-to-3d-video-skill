@@ -1,0 +1,4 @@
+interface:
+  display_name: "HiAPI Animation Forge"
+  short_description: "Plan rigged 3D assets and source-locked renders"
+  default_prompt: "Use $hiapi-2d-to-3d-video to plan this authorized 2D animation as an asset-first 3D pipeline, then run only the adapters whose capability, license, hardware, and QC gates are satisfied."

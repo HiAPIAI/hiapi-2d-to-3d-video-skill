@@ -1,0 +1,42 @@
+{
+  "name": "hiapi-2d-to-3d-video-skill",
+  "version": "0.8.0",
+  "description": "HiAPI Animation Forge skill for asset-first 2D-to-3D planning, source-locked reconstruction, and gated generative rendering",
+  "type": "module",
+  "private": true,
+  "homepage": "https://github.com/HiAPIAI/hiapi-2d-to-3d-video-skill",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HiAPIAI/hiapi-2d-to-3d-video-skill.git"
+  },
+  "bin": {
+    "hiapi-2d-to-3d-video-skill": "./scripts/install.mjs",
+    "hiapi-2d-to-3d-video": "./scripts/hiapi-2d-to-3d-video.mjs",
+    "hiapi-animation-forge-plan": "./scripts/plan-animation-forge.mjs"
+  },
+  "scripts": {
+    "test": "node --test tests/*.test.mjs",
+    "check": "node --check scripts/hiapi-2d-to-3d-video.mjs && node --check scripts/plan-animation-forge.mjs && node --check scripts/install.mjs && npm test"
+  },
+  "keywords": [
+    "hiapi",
+    "seedance",
+    "seedance-2.0",
+    "kling",
+    "kling-3.0-omni",
+    "image-to-video",
+    "reference-video",
+    "source-lock",
+    "animation-forge",
+    "rigged-asset",
+    "blender",
+    "animation-to-real-world",
+    "cartoon-to-photoreal",
+    "video-generation",
+    "agent-skill"
+  ],
+  "license": "MIT",
+  "engines": {
+    "node": ">=18"
+  }
+}
