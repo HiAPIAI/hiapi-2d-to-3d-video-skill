@@ -1,6 +1,6 @@
 # Kling Appearance-First Output Package And QC
 
-This package format applies to the bundled Kling CLI. Seedance balanced output and review follow `hiapi-reference-motion-transfer-skill`.
+This package format applies to the bundled Kling CLI. Seedance balanced output and review use the vendored reference-motion runtime documented in [reference-motion-runtime.md](reference-motion-runtime.md).
 
 For any workflow that began from a source video, apply [source-lock.md](source-lock.md) before final acceptance. Kling output cannot receive `source_lock_passed` because Kling never receives the source video; its strongest valid status is an appearance-first result reviewed against the written brief.
 

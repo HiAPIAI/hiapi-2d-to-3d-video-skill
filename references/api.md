@@ -1,6 +1,6 @@
 # Kling Appearance-First API And Spend Boundary
 
-This contract applies only to the bundled Kling CLI. Seedance balanced uses the sibling `hiapi-reference-motion-transfer-skill` contract described in [temporal-fidelity.md](temporal-fidelity.md).
+This contract applies only to the bundled Kling CLI. Seedance balanced uses the vendored reference-motion runtime contract described in [temporal-fidelity.md](temporal-fidelity.md) and [reference-motion-runtime.md](reference-motion-runtime.md).
 
 ## Fixed Endpoints
 

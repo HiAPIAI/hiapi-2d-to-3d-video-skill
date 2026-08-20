@@ -12,11 +12,12 @@
   "bin": {
     "hiapi-2d-to-3d-video-skill": "./scripts/install.mjs",
     "hiapi-2d-to-3d-video": "./scripts/hiapi-2d-to-3d-video.mjs",
-    "hiapi-animation-forge-plan": "./scripts/plan-animation-forge.mjs"
+    "hiapi-animation-forge-plan": "./scripts/plan-animation-forge.mjs",
+    "hiapi-reference-motion-transfer": "./scripts/reference-motion-transfer/hiapi-reference-motion-transfer.mjs"
   },
   "scripts": {
     "test": "node --test tests/*.test.mjs",
-    "check": "node --check scripts/hiapi-2d-to-3d-video.mjs && node --check scripts/plan-animation-forge.mjs && node --check scripts/install.mjs && npm test"
+    "check": "node --check scripts/hiapi-2d-to-3d-video.mjs && node --check scripts/plan-animation-forge.mjs && node --check scripts/install.mjs && node --check scripts/reference-motion-transfer/hiapi-reference-motion-transfer.mjs && node --check scripts/reference-motion-transfer/lib/media-files.mjs && node --check scripts/reference-motion-transfer/lib/motion-transfer.mjs && node --check scripts/reference-motion-transfer/lib/seedance-2-video.mjs && npm test"
   },
   "keywords": [
     "hiapi",

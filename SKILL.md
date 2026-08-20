@@ -79,10 +79,10 @@ AI video models are optional render/refinement stages, never the source of deter
 
 ### Seedance Source-Locked Candidate
 
-Use the sibling `hiapi-reference-motion-transfer-skill` in `balanced` mode with exactly one source video and one approved complete target-world image. Pass the image with `--reference-image-file`, never `--replacement-image-file`.
+Use the bundled `scripts/reference-motion-transfer/hiapi-reference-motion-transfer.mjs` runtime in `balanced` mode with exactly one source video and one approved complete target-world image. Pass the image with `--reference-image-file`, never `--replacement-image-file`. The runtime is included in this repository so an independent installation does not depend on the archived `hiapi-reference-motion-transfer-skill` checkout; see [references/reference-motion-runtime.md](references/reference-motion-runtime.md).
 
 ```powershell
-node ..\hiapi-reference-motion-transfer-skill\scripts\hiapi-reference-motion-transfer.mjs `
+node scripts\reference-motion-transfer\hiapi-reference-motion-transfer.mjs `
   --mode balanced `
   --reference-video-file "D:\media\authorized-shot.mp4" `
   --reference-image-file "D:\media\approved-target-world.png" `

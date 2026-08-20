@@ -30,6 +30,14 @@ test("installer copies only runtime skill files and protects existing installs",
 
     const destination = join(root, "hiapi-2d-to-3d-video");
     assert.match(await readFile(join(destination, "SKILL.md"), "utf8"), /HiAPI Animation Forge/);
+    assert.match(
+      await readFile(join(destination, "scripts", "reference-motion-transfer", "hiapi-reference-motion-transfer.mjs"), "utf8"),
+      /HiAPI Reference Motion Transfer/,
+    );
+    assert.match(
+      await readFile(join(destination, "references", "reference-motion-runtime.md"), "utf8"),
+      /Source commit: `5494ed9d/,
+    );
     await assert.rejects(readFile(join(destination, "TODO.md"), "utf8"), /ENOENT/);
 
     const marker = join(destination, "local-marker.txt");
