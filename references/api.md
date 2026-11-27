@@ -4,7 +4,7 @@ This contract applies only to the bundled Kling CLI. Seedance balanced uses the 
 
 ## Fixed Endpoints
 
-Use only `https://api.hiapi.ai`:
+Use only `https://api.hiapi.sh`:
 
 - `GET /api/pricing` for uncached public live pricing.
 - `GET /v1/tasks?page=1&size=1` for an authenticated zero-cost check.

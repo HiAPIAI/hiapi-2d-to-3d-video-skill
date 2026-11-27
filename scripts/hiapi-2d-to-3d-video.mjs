@@ -5,7 +5,7 @@ import { mkdir, open, readFile, readdir, rename, rm, stat, writeFile } from "nod
 import { extname, resolve } from "node:path";
 import { pathToFileURL } from "node:url";
 
-export const BASE_URL = "https://api.hiapi.ai";
+export const BASE_URL = (process.env.HIAPI_BASE_URL || "https://api.hiapi.sh").replace(/\/+$/, "");
 export const MODEL = "kling-3.0-omni/image-to-video";
 export const DEFAULT_MAX_COST_USD = 3;
 export const APPROVAL_TTL_SECONDS = 12 * 60 * 60;

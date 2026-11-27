@@ -524,7 +524,7 @@ test("dry-run reads Kling pricing but never creates a task", async () => {
         return jsonResponse(pricing(0.1));
       },
     });
-    assert.deepEqual(seen, ["https://api.hiapi.ai/api/pricing"]);
+    assert.deepEqual(seen, ["https://api.hiapi.sh/api/pricing"]);
     const result = JSON.parse(output.at(-1));
     assert.equal(result.estimatedCostUsd, 0.5);
     assert.equal(result.promptCharacters, Array.from(result.payload.input.prompt).length);
@@ -582,7 +582,7 @@ test("price increase above approved Kling quote blocks task submission", async (
       }),
       /exceeds the approved quote/,
     );
-    assert.deepEqual(seen, ["https://api.hiapi.ai/api/pricing"]);
+    assert.deepEqual(seen, ["https://api.hiapi.sh/api/pricing"]);
   });
 });
 
@@ -591,7 +591,7 @@ test("submission guard rechecks token expiry before every retry", async () => {
   let calls = 0;
   await assert.rejects(
     () => submitTask(
-      { baseUrl: "https://api.hiapi.ai", apiKey: TEST_API_KEY },
+      { baseUrl: "https://api.hiapi.sh", apiKey: TEST_API_KEY },
       { model: MODEL, input: {} },
       "2d3d-aaaaaaaaaaaa-bbbbbbbbbbbbbbbbbbbb",
       {
@@ -612,7 +612,7 @@ test("deterministic HTTP rejection is not reported as an unresolved submission",
   let calls = 0;
   await assert.rejects(
     () => submitTask(
-      { baseUrl: "https://api.hiapi.ai", apiKey: TEST_API_KEY },
+      { baseUrl: "https://api.hiapi.sh", apiKey: TEST_API_KEY },
       { model: MODEL, input: {} },
       "2d3d-aaaaaaaaaaaa-bbbbbbbbbbbbbbbbbbbb",
       { fetchImpl: async () => { calls += 1; return jsonResponse({ message: "invalid" }, 400); } },
@@ -661,7 +661,7 @@ test("resumed task stops an oversized video while streaming", async () => {
         maxDownloadBytes: 12,
         fetchImpl: async (url) => {
           const value = String(url);
-          if (value === "https://api.hiapi.ai/v1/tasks/task-kling-oversized") {
+          if (value === "https://api.hiapi.sh/v1/tasks/task-kling-oversized") {
             return jsonResponse({ data: {
               id: "task-kling-oversized",
               status: "success",
@@ -697,7 +697,7 @@ test("resumed task times out a stalled video download", async () => {
         downloadTimeoutMs: 10,
         fetchImpl: async (url, init = {}) => {
           const value = String(url);
-          if (value === "https://api.hiapi.ai/v1/tasks/task-kling-stalled") {
+          if (value === "https://api.hiapi.sh/v1/tasks/task-kling-stalled") {
             return jsonResponse({ data: {
               id: "task-kling-stalled",
               status: "success",
@@ -744,8 +744,8 @@ test("generated package records Kling contract, controls, hashes, and replay evi
       sleepImpl: async () => {},
       fetchImpl: async (url, init = {}) => {
         const value = String(url);
-        if (value === "https://api.hiapi.ai/api/pricing") return jsonResponse(pricing(0.1));
-        if (value === "https://api.hiapi.ai/v1/tasks" && init.method === "POST") {
+        if (value === "https://api.hiapi.sh/api/pricing") return jsonResponse(pricing(0.1));
+        if (value === "https://api.hiapi.sh/v1/tasks" && init.method === "POST") {
           submittedBodies.push(init.body);
           submittedKeys.push(init.headers["Idempotency-Key"]);
           assert.deepEqual(JSON.parse(init.body).input, built.payload.input);
@@ -753,7 +753,7 @@ test("generated package records Kling contract, controls, hashes, and replay evi
           if (submittedBodies.length === 2) return jsonResponse({ code: 409, data: null }, 409, { "Retry-After": "1" });
           return jsonResponse({ data: { id: "task-kling-controls" } }, 200, { "Idempotent-Replay": "true" });
         }
-        if (value === "https://api.hiapi.ai/v1/tasks/task-kling-controls") {
+        if (value === "https://api.hiapi.sh/v1/tasks/task-kling-controls") {
           return jsonResponse({ data: {
             id: "task-kling-controls",
             status: "success",
@@ -809,7 +809,7 @@ test("resumed task reports unknown audio when the task omits sound", async () =>
       print: (value) => output.push(String(value)),
       fetchImpl: async (url) => {
         const value = String(url);
-        if (value === "https://api.hiapi.ai/v1/tasks/task-kling-resume") {
+        if (value === "https://api.hiapi.sh/v1/tasks/task-kling-resume") {
           return jsonResponse({ data: {
             id: "task-kling-resume",
             status: "success",
